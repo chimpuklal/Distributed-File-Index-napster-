@@ -3,14 +3,14 @@
 ---
 
 ### Academic Information
-- **Group Number:** `[Group Number]`
-- **Project Title:** `[Project Title: Simple Distributed File Index]`
+- **Group Number:** `9`
+- **Project Title:** `Simple Distributed File Index`
 - **Course:** Computer Networks
 - **Team Members & Roll Numbers:**
-  - `[Member Name 1]` - `[Roll Number 1]`
-  - `[Member Name 2]` - `[Roll Number 2]`
-  - `[Member Name 3]` - `[Roll Number 3]`
-  - `[Member Name 4]` - `[Roll Number 4]`
+  - `Kshitij Jain` - `241000041`
+  - `Kuldeep Patidar` - `241000042`
+  - `Kushagra Kumar Singh` - `241000044`
+  - `Lakshya Dewangan` - `241000045`
 
 ---
 
