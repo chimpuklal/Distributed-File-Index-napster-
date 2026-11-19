@@ -5,7 +5,7 @@
 ### Academic Information
 - **Group Number:** `9`
 - **Project Title:** `Simple Distributed File Index`
-- **Course:** Computer Networks
+- **Course:** Distributed Systems
 - **Team Members & Roll Numbers:**
   - `Kshitij Jain` - `241000041`
   - `Kuldeep Patidar` - `241000042`
