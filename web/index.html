@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Distributed File Index</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <h1 class="project-title">Distributed File Index</h1>
+        <p class="project-subtitle">Centralized Peer-to-Peer File Discovery</p>
+      </div>
+      <div class="header-right">
+        <div id="server-status" class="status-badge status-checking">
+          <span class="status-dot"></span>
+          <span id="status-text">Checking...</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Overview Statistics -->
+    <section class="overview-section">
+      <div class="stat-card">
+        <div class="stat-label">Total Registered Peers</div>
+        <div id="stat-peers" class="stat-value">0</div>
+        <div class="stat-subtext">Active peers in directory</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Unique Files</div>
+        <div id="stat-files" class="stat-value">0</div>
+        <div class="stat-subtext">Indexed file keys</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total File Registrations</div>
+        <div id="stat-registrations" class="stat-value">0</div>
+        <div class="stat-subtext">Across all active peers</div>
+      </div>
+    </section>
+
+    <!-- Operations Grid: Register & Search -->
+    <div class="operations-grid">
+      <!-- Register a Peer -->
+      <section class="card form-section">
+        <div class="card-header">
+          <h2 class="card-title">Register a Peer</h2>
+          <span class="card-badge">POST /api/v1/peers/register</span>
+        </div>
+        <form id="register-form" novalidate>
+          <div class="form-group">
+            <label for="reg-peer-id">Peer ID</label>
+            <input type="text" id="reg-peer-id" placeholder="e.g. peer-C" required autocomplete="off">
+            <span class="input-hint">Unique identifier simulating a network client.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-files">Filenames (comma-separated)</label>
+            <input type="text" id="reg-files" placeholder="notes.pdf, assignment.cpp, image.png" required autocomplete="off">
+            <span class="input-hint">List of files available locally on this peer.</span>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="btn-register" class="btn btn-primary">
+              Register Peer
+            </button>
+          </div>
+        </form>
+
+        <div id="register-alert" class="alert hidden" role="alert"></div>
+      </section>
+
+      <!-- Search Files -->
+      <section class="card search-section">
+        <div class="card-header">
+          <h2 class="card-title">Search Files</h2>
+          <span class="card-badge">GET /api/v1/search</span>
+        </div>
+        <form id="search-form" novalidate>
+          <div class="form-group">
+            <label for="search-input">Filename</label>
+            <div class="search-input-group">
+              <input type="text" id="search-input" placeholder="e.g. photo.jpg" required autocomplete="off">
+              <button type="submit" id="btn-search" class="btn btn-primary">Search</button>
+              <button type="button" id="btn-clear" class="btn btn-secondary">Clear</button>
+            </div>
+            <span class="input-hint">Case-insensitive lookup across the central index.</span>
+          </div>
+        </form>
+
+        <div id="search-alert" class="alert hidden" role="alert"></div>
+
+        <div id="search-results" class="search-results-box hidden">
+          <div class="search-result-header">
+            <span>Query: <strong id="result-filename"></strong></span>
+            <span id="result-count" class="badge"></span>
+          </div>
+          <div id="result-peers-list" class="result-peers-list"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Registered Peers Directory -->
+    <section class="card peers-section">
+      <div class="card-header">
+        <div class="card-header-title">
+          <h2 class="card-title">Registered Peers</h2>
+          <span id="peers-count-badge" class="badge">0 Peers</span>
+        </div>
+        <button type="button" id="btn-refresh" class="btn btn-secondary btn-sm">
+          <span class="refresh-icon">↻</span> Refresh Data
+        </button>
+      </div>
+
+      <div id="peers-container" class="peers-list-wrapper">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Distributed File Index &bull; Computer Networks Centralized File-Indexing Architecture (Napster Model)</p>
+      <p class="footer-note">Central server provides in-memory indexing and discovery. File transfer is handled out-of-band.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
